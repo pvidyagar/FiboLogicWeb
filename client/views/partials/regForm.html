@@ -1,0 +1,112 @@
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<div class="modal-fade" ng-show="regForm" tabindex="-1"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	ng-controller="registrationController">
+
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header login_modal_header" align="center">
+
+
+				<button class="close" data-dismiss="modal" aria-hidden="true"
+					ng-click="closeMe();">&times;</button>
+				<h3 class="modal-title" id="myModalLabel">Recipe Register</h3>
+			</div>
+			<div class="modal-body login-modal">
+				<form name="myForm" id="signin" role="form">
+					<label for="Name">Name Of Recipe </label> <input type="text"
+						class="form-control" ng-model="recipe.name" name="Name" required>
+					<span style="color: red"
+						ng-show="myForm.Name.$dirty  && myForm.Name.$invalid ">Name
+						is required.</span> <br>
+					<div class="field">
+						<label>Cuisine </label> <select class="form-control"
+							ng-model="recipe.cuisine">
+							<option value="Marathi">Marathi</option>
+							<option value="Mughlai">Mughlai</option>
+							<option value="Punjabi">Punjabi</option>
+							<option value="Rajasthani">Rajasthani</option>
+							<option value="Mangalorean">Mangalorean</option>
+							<option value="Bengali">Bengali</option>
+							<option value="Awadhi">Awadhi</option>
+							<option value="Global">Global</option>
+						</select>
+
+					</div>
+					<br>
+					<div class="field">
+						<label>Recipe Type </label> <select class="form-control"
+							ng-model="recipe.type">
+							<option value="Snacks">Snacks</option>
+							<option value="Soup">Soup</option>
+							<option value="Salad">Salad</option>
+							<option value="Breakfast">Breakfast</option>
+							<option value="Dessert">Dessert</option>
+							<option value="Sandwitches">Sandwitches</option>
+							<option value="Main Course">Main Course</option>
+						</select>
+					</div>
+					<br>
+					<div class="field">
+						<input type="file" file-model="myFile" id="iiimg" name="img"
+							accept="image/*" class="form-control"
+							required /><br> <img id="imageData"
+							ng-show="showImage" style="height: 200px; width: 200;"
+							 />
+
+					</div>
+					<!-- imageData ? imageData : '../assets/img/logo.jpg'  -->
+
+					<div class="field">
+						<p align="right">
+							<a href="" ng-click="toggleDetail()">Add more details</a>
+						</p>
+					</div>
+
+					<div ng-show="more">
+						<div class="field">
+							<label>Ingredients </label> <input type="text"
+								class="form-control" ng-model="recipe.ingredients" name="Ing"
+								required> <span style="color: red"
+								ng-show="myForm.Ing.$dirty && myForm.Ing.$invalid ">Ingredients
+								are required.</span>
+						</div>
+						<br>
+						<div class="field">
+							<label> Chef Name </label> <input type="text"
+								class="form-control" ng-model="recipe.chef" name="Chef" required>
+							<span style="color: red"
+								ng-show="myForm.Chef.$dirty  && myForm.Chef.$invalid ">Chef
+								Name is required.</span>
+						</div>
+						<br>
+						<div class="field">
+							<label> Cook/Prep Method </label>
+							<textarea ng-model="recipe.method" class="form-control"
+								name="Met" required></textarea>
+							<span style="color: red"
+								ng-show="myForm.Met.$dirty  && myForm.Met.$invalid ">Method
+								is required.</span>
+						</div>
+					</div>
+
+					<br>
+
+
+					<div class="field">
+						<button class="btn btn-danger "
+							ng-disabled="myForm.Name.$pristine && myForm.Name.$dirty  && myForm.Name.$invalid ||
+	                     		myForm.Chef.$dirty  && myForm.Chef.$invalid || 
+	                             myForm.img.$dirty  && myForm.img.$invalid "
+							ng-click="addRecipe(); closeMe()">Add Your Recipe</button>
+
+					</div>
+				</form>
+			</div>
+			<div class="clearfix"></div>
+			<div class="modal-footer login_modal_footer"></div>
+		</div>
+	</div>
+</div>

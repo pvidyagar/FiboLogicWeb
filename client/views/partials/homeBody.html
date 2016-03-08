@@ -1,0 +1,432 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.js"></script>
+<script type="text/javascript" src="/assets/js/jR3DCarousel.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+
+<!-- ============= Modal structure ============== -->
+
+<!-- Scripts for carosole -->
+<script type="text/javascript">
+$(document).ready(function(){
+	var slides = [{src: '../assets/img/bg_fresh_ingrdients.jpg'}, {src: '../assets/img/bg_suburb.jpg'}, 
+	              {src: '../assets/img/onDemand.jpg'},{src: '../assets/img/curryrice.jpg'}]
+	var captions = [{cap:'Fresh Ingredients ...!'}, {cap:'Food On Demand'} , 
+	               {cap:'Quality Food... Guaranteed...'}]
+	var jR3DCarousel;
+	var carouselProps =  {
+			 		  width: 1760, 				/* largest allowed width */
+					  height: 960, 				/* largest allowed height */
+					  slideLayout : 'fill',     /* "contain" (fit according to aspect ratio), "fill" (stretches object to fill) and "cover" (overflows box but maintains ratio) */
+					  animation: 'slide3D', 		/* slide | scroll | fade | zoomInSlide | zoomInScroll */
+					  animationCurve: 'ease',
+					  animationDuration: 700,
+					  animationInterval: 3000,
+					  autoplay: true,
+					  onSlideShow: show,		/* callback when Slide show event occurs */
+					  navigation: 'circles',	/* circles | squares */
+					  slides: slides ,			/* array of images source or gets slides by 'slide' class */
+					  captions : captions  
+				}
+	function setUp(){
+ 		jR3DCarousel = $('.jR3DCarouselGallery').jR3DCarousel(carouselProps);
+
+		$('.settings').html('<pre>$(".jR3DCarouselGallery").jR3DCarousel('+JSON.stringify(carouselProps, null, 4)+')</pre>');		
+		
+	}
+	function show(slide){
+		//console.log("Slide shown: ", slide.find('img').attr('src'))
+	}
+	$('.carousel-props input').change(function(){
+		if(isNaN(this.value))
+			carouselProps[this.name] = this.value || null; 
+		else
+			carouselProps[this.name] = Number(this.value) || null; 
+		
+		for(var i = 0; i < 999; i++)
+	     clearInterval(i);
+		$('.jR3DCarouselGallery').empty();
+		setUp();
+		jR3DCarousel.showNextSlide();
+	})
+	
+	$('[name=slides]').change(function(){
+		carouselProps[this.name] = getSlides(this.value); 
+		for (var i = 0; i < 999; i++)
+	     clearInterval(i);
+		$('.jR3DCarouselGallery').empty();
+		setUp();
+		jR3DCarousel.showNextSlide();		
+	});
+	
+	function getSlides(no){
+		slides = [];
+		for ( var i = 0; i < no; i++) {
+			slides.push({src: 'https://unsplash.it/'+Math.floor(1366-Math.random()*200)+'/'+Math.floor(768+Math.random()*200)})
+		}
+		return slides;
+	}
+	
+	//carouselProps.slides = getSlides(7);
+	setUp()
+
+  })
+</script>
+<!--  -->
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLable">
+	<div class="modal-dialog" role="dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h3 class="modal-title">Menu:</h3>
+			</div>
+
+			<div class="modal-body"></div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Order Now</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="jR3DCarouselGallery"></div>
+
+
+<div style="padding-top: 50px">
+	<div id="wrap">
+		<div class="divider" id="carousels"></div>
+		<div class="masthead">
+			
+<!-- 
+			
+				<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 40%; width: 100%">
+					Indicators
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						
+						<div class="item">
+								<img src="../assets/img/bg_fresh_ingrdients.jpg">
+							<div class="container">
+								<div class="carousel-caption">
+									<h3>Fresh Ingredients ...!</h2>
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="item active">
+							<img src="../assets/img/onDemand.jpg">
+							<div class="container">
+								<div class="carousel-caption">
+									<h2>Food On Demand</h2>
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<img src="../assets/img/bg_flemingo.jpg">
+							<div class="container">
+								<div class="carousel-caption">
+									<h3>Quality Food... Guaranteed...</h2>
+									<p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					/.carousel-inner
+					<div class="logo"></div>
+					Controls
+					<a class="left carousel-control" href="#myCarousel"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</a> <a class="right carousel-control" href="#myCarousel"
+						data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			
+			/.carousel
+		</div>
+
+ -->
+		<!-- ============ Begin page content ================ -->
+
+		<div class="divider" id="dropdowns"></div>
+
+		<div class="bg-4">
+			<div class="container ">
+				<center>
+					<div class="row" style="left-margin: 10px;">
+
+
+						<div class="col-md-4 col-sm-4 col-xs-4 ">
+
+							<li>
+								<div class="btn-group">
+									<a class="btn btn-danger dropdown-toggle btn-select2 filterCaption"
+										data-toggle="dropdown" href=""> <span
+										class="glyphicon glyphicon-calendar"></span> Select Date <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#"> <font color="black"> <span
+													id="today"></span>
+
+											</font>
+										</a></li>
+
+										<li role="presentation" class="divider"></li>
+										<li><a href="#"> <font color="black"> <span
+													id="tommarow"></span>
+
+											</font>
+										</a></li>
+										<li role="presentation" class="divider"></li>
+										<li><a href="#"> <font color="black"> <span
+													id="dat"></span>
+
+											</font>
+										</a></li>
+									</ul>
+								</div>
+							</li>
+						</div>
+
+						<center>
+							<div class="col-md-4 col-sm-4 col-xs-4">
+								<li>
+									<div class="btn-group">
+										<a class="btn btn-danger dropdown-toggle btn-select2 filterCaption"
+											data-toggle="dropdown" href=""> <span
+											class="glyphicon glyphicon-cutlery"></span> Food Type <span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+										<li><a href="#" ng-click="searchAll()"> All
+											</a></li>
+										    <li role="presentation" class="divider"></li>
+											<li><a href="#" ng-click="search('Soup')"> Beverages
+											</a></li>
+											<li role="presentation" class="divider"></li>
+											<li><a href="#" ng-click="search('Salad')"> Salads</a></li>
+											<li role="presentation" class="divider"></li>
+											<li><a href="#" ng-click="search('Breakfast')">
+													Breakfast</a></li>
+											<li role="presentation" class="divider"></li>
+											<li><a href="#" ng-click="search('Desert')"> Desert
+											</a></li>
+											<li role="presentation" class="divider"></li>
+											<li><a href="#" ng-click="search('Main Course')">
+													Main Course </a></li>
+										</ul>
+									</div>
+								</li>
+							</div>
+						</center>
+
+						<center>
+							<div class="col-md-4 col-sm-4 col-xs-4">
+								<li>
+									<div class="btn-group">
+										<a class="btn btn-danger dropdown-toggle btn-select2 filterCaption"
+											data-toggle="dropdown" href=""> <span
+											class="glyphicon glyphicon-leaf"></span> Veg/Non-Veg <span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+										<li><a href="#">All </a></li>
+											<li><a href="#">Veg </a></li>
+											<li role="presentation" class="divider"></li>
+											<li><a href="#"> Non-Veg </a></li>
+										</ul>
+									</div>
+								</li>
+							</div>
+						</center>
+
+					</div>
+				</center>
+			</div>
+			<!--/.container -->
+		</div>
+		<!--/.bg-4 -->
+
+		<!--================= Menu List ================ -->
+
+	
+		
+
+        <div class="divider" id="menu"></div>
+        <div class="bg-4">
+            <div class="container" style="width:100%">
+
+              <div class="divider" id="menu"></div>
+			<div class="bg-4">
+  			<div class="container" style="width:100%">
+					<div class="row">
+
+						<div class="col-sm-4 col-xs-6" ng-repeat="i in image">
+        			<div class="panel panel-default">
+          			<div class="panel-thumbnail">
+									<a href=" javascript:void(0);" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" ng-click=" showDetails(i._id)"><img ng-src="{{i.url}}" class="img-responsive"></a></div>
+          				<div class="panel-body">
+
+      								{{i.name}} <a href="#"><span class="glyphicon glyphicon-plus-sign prev"></span>
+                                        </a>
+										</div>
+
+          				</div>
+        				</div><!--/panel-->
+      				</div><!--/col-->
+
+            </div>
+            </div>
+
+			<!--/container-->
+
+			<div id="light" class="white_content">
+				<p align="right">
+					<a href="javascript:void(0)"
+						onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img
+						src="../assets/img/close.png" height="15" width="15"></a>
+				</p>
+				<h3>{{view.name}}</h3>
+
+				<div class="image" align="center">
+					<img ng-src="{{view.url}}">
+				</div>
+
+				<em><p align="right">By: {{view.chef}}</p></em> <b>Ingredients:
+				</b> {{view.ingredients}}<br> <b>Method: </b> {{view.method}}<br>
+				<b>Type: </b>{{view.type}}<br> <b>Cuisine: {{view.cuisine}}
+				
+			</div>
+
+			<div id="fade" class="black_overlay"></div>
+		</div>
+
+		<!--================= Contact and About Us button ================ -->
+
+		<div class="divider" id="contactAbout"></div>
+		<div class="row">
+			<center>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<button type="button" class="btn btn-danger btn-lg"
+						ng-click="clickContact()">Contact Us</button>
+				</div>
+
+				<div class="col-md-6 col-sm-6 col-xs-6" style="">
+					<button type="button" class="btn btn-danger btn-lg">About
+						Us</button>
+				</div>
+			</center>
+		</div>
+	</div>
+	<!--================= Contact us Form ================ -->
+
+	<div class="divider" id="contact"></div>
+	<center>
+		<div class="row" ng-show="showContact">
+			<div class="col-md-12">
+				<div class="well well-sm">
+					<form class="form-horizontal" method="post">
+						<fieldset>
+							<legend class="text-center header">Contact us</legend>
+							<div class="form-group">
+								<span class="col-md-1 col-md-offset-2 text-center"><i
+									class="fa fa-user bigicon"></i></span>
+								<div class="col-md-8">
+									<input id="fname" name="name" type="text"
+										placeholder="First Name" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<span class="col-md-1 col-md-offset-2 text-center"><i
+									class="fa fa-user bigicon"></i></span>
+								<div class="col-md-8">
+									<input id="lname" name="name" type="text"
+										placeholder="Last Name" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<span class="col-md-1 col-md-offset-2 text-center"><i
+									class="fa fa-envelope-o bigicon"></i></span>
+								<div class="col-md-8">
+									<input id="email" name="email" type="text"
+										placeholder="Email Address" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<span class="col-md-1 col-md-offset-2 text-center"><i
+									class="fa fa-phone-square bigicon"></i></span>
+								<div class="col-md-8">
+									<input id="phone" name="phone" type="text" placeholder="Phone"
+										class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<span class="col-md-1 col-md-offset-2 text-center"><i
+									class="fa fa-pencil-square-o bigicon"></i></span>
+								<div class="col-md-8">
+									<textarea class="form-control" id="message" name="message"
+										placeholder="Enter your massage for us here. We will get back to you within 2 business days."
+										rows="7"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12 text-center">
+									<button type="submit" class="btn btn-danger btn-lg">Submit</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</center>
+</div>
+<!--/container-->
+</div>
+
+<!--================= footer ================ -->
+<div class="footer_b">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="footer_bottom">
+					<p class="text-block">
+						&copy; Copyright reserved to <span>Home Delights </span>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="footer_mid pull-right">
+					<ul class="social-contact list-inline">
+						<li><a href="http://facebook.com/bootply"><img
+								src="/assets/img/soc_fb.png" height="30"></a></li>
+						<li><a href="http://twitter.com/bootply"><img
+								src="/assets/img/soc_tw.png" height="30"></a></li>
+						<li><a href="http://google.com/+bootply"><img
+								src="/assets/img/soc_gplus.png" height="30"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<br> <br>
+</div>
+<!--================= go Up code ================ -->
+<ul class="nav pull-right scroll-top scrollToTop">
+	<li><a href="#" title="Scroll to top" class="myAncher"><i
+			class="glyphicon glyphicon-chevron-up"></i></a></li>
+</ul>
+

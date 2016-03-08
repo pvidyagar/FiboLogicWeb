@@ -1,0 +1,548 @@
+@import
+	url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+
+html, body {
+	height: 100%;
+	/* The html and body elements cannot have any padding or margin. */
+	-webkit-font-smoothing: antialiased;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by its height */
+	margin: 0 auto -60px;
+	/* Pad bottom by footer height */
+	padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+	height: 60px;
+	background-color: #f5f5f5;
+	margin-top: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+#myCarousel .item {
+	height: 300px;
+	background-color: #bbb;
+}
+
+#myCarousel img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 600px;
+}
+
+#wrap>.container {
+	padding: 60px 15px 0;
+}
+
+.container .credit {
+	margin: 20px 0;
+}
+
+#footer {
+	background-color: #414141;
+}
+
+#footer a {
+	color: #efefef;
+}
+
+header {
+	background: #333;
+	color: #555;
+}
+
+header .dropdown-menu {
+	top: 74px;
+	background: #ffcc33;
+	border-width: 0;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+.logo {
+	font-size: 40px;
+	position: absolute;
+	z-index: 1200;
+	color: #333;
+	top: 70px;
+	text-align: center;
+	width: 100%;
+}
+
+#nav {
+	width: 93%;
+	position: static;
+	top: -32px;
+}
+
+#nav.affix {
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	-webkit-transition: all .6s ease-in-out;
+}
+
+#nav.affix-top {
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	-webkit-transition: all .6s ease-in-out;
+}
+
+#footer>.container {
+	
+}
+
+@media ( min-width : 767px) {
+	.navbar-nav.nav-justified>li {
+		float: none;
+	}
+}
+
+.navbar-nav {
+	margin: 1px 1px;
+}
+
+/* customize nav style */
+.navbar-custom {
+	background-color: #2e2e2e;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-width: 0;
+}
+
+.navbar-custom .navbar-nav>li>a {
+	color: #EAE01D;
+}
+
+.navbar-custom .dropdown-menu li>a:hover {
+	color: #eee;
+}
+
+/*.navbar-custom  .navbar-nav li>a:hover, .navbar-nav li .open, .navbar-custom .navbar-nav .active a  {
+  background-color: #000;
+}*/
+.navbar-custom .navbar-nav>.dropdown>a .caret {
+	border-top-color: #999;
+	border-bottom-color: #999;
+}
+
+.navbar-collapse.in {
+	/*3.0.2 bug workaround*/
+	overflow-y: visible;
+}
+
+.navbar-toggle {
+	outline: 0;
+}
+
+.divider {
+	height: 10px;
+}
+
+.panel {
+	border-width: 2px;
+	border-color: #eee !important;
+	padding: 0px 0px 0px;
+}
+
+.panel:hover {
+	border-width: 2px;
+	border-color: #fed136 !important;
+}
+
+@media ( max-width : 768px) {
+	header {
+		
+	}
+}
+
+#map-canvas {
+	width: 100%;
+	height: 300px;
+	margin: 0;
+	padding: 15px;
+}
+
+.scroll-top {
+
+	position: fixed;
+	bottom: 0;
+	right: 6%;
+	z-index: 100;
+	font-size: 24px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+
+    position: fixed;
+    bottom: 0;
+    right: 6%;
+    z-index: 100;
+   
+    font-size: 24px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+}
+
+.scroll-top a:link, .scroll-top a:visited {
+	color: #222;
+}
+
+section {
+	color: #ffffff;
+	min-height: 400px;
+	height: auto !important;
+	height: 100%;
+	padding-top: 100px;
+}
+
+.bg-1 {
+	background: url('http://www.bootply.com/assets/example/bg_suburb.jpg')
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.bg-2 {
+	background: url('http://www.bootply.com/assets/example/bg_suburb.jpg')
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.bg-3 {
+	background:
+		url('http://www.bootply.com/assets/example/bg_blueplane.jpg')
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.bg-4 {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	background-color: #ffffff;
+}
+
+.panel .img-responsive {
+	min-height: 270px;
+	max-height: 270px;
+}
+
+.header {
+	color: #C62715;
+	font-size: 27px;
+	padding: 10px;
+}
+
+.bigicon {
+	font-size: 35px;
+	color: #36A0FF;
+}
+
+.prev {
+	float: right;
+	padding-right: 40px;
+}
+
+.footer_b {
+	background: #222;
+	border-top: 1px solid #555;
+}
+
+.footer_bottom {
+	
+}
+
+.footer_bottom p {
+	font-size: 18px;
+	color: #C4C4C4;
+	margin: 25px 0px;
+}
+
+.footer_social {
+	padding: 20px 0px;
+}
+
+.footer_social i {
+	width: 50px;
+	height: 50px;
+	padding: 14px;
+	color: #fff;
+	font-size: 25px;
+	border-radius: 3px;
+}
+
+.footer_mid ul li {
+	margin-top: 20px;
+}
+
+/* .navbar-custom-style {
+    background-color: #fff;
+    border-color: #80ff80;
+    border-top-color: #80ff80;
+    border-right-color: #80ff80;
+    border-bottom-color: #fed136;
+    border-left-color: #80ff80;
+   border-width: 0 0 5px;
+}
+ */
+.navbar-custom-style_header {
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-transform: none !important;
+	font-weight: 400;
+	letter-spacing: 1px;
+	color: #ffffff !important;
+}
+
+.companyName {
+
+	color: #d43f3a !important;
+	font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial,
+		cursive;
+	cursor: auto;
+	font-weight: 0;
+	font-size: 35px;
+}
+
+.companyName:hover {
+	color: #fed136 !important;
+	background-color: transparent;
+}
+
+.black_overlay {
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity = 80);
+}
+
+.white_content {
+	display: none;
+	position: fixed;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 70%;
+	padding: 16px;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a
+	{
+	color: #d43f3a !important;
+	background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover
+	{
+	color: #fed136 !important;
+	background-color: transparent;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: #ffffff !important;
+}
+
+.container {
+	background-color: transparent;
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.navbar-default {
+	background-color: #ffffff !important;
+	border-color: #ffffff !important;
+}
+
+
+
+.myAncher { 
+	width:50px; 
+		 }
+
+
+.glyphicon-chevron-up{
+	padding-right:10px;
+	}
+
+.scrollToTop{
+	
+	width:50px;
+	height:40px;
+	padding:10px;
+	text-align:center;
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	position:fixed;
+	top:600px;
+	right:40px;
+	display:none;
+	}
+
+.scrollToTop:hover{
+	text-decoration:none;
+	}
+
+li{
+	list-style-type: none;
+	}
+
+h2,h3 {
+    font: italic normal 1.5em Georgia,"Times New Roman","Century Schoolbook L",serif;
+}
+h2{
+	 color: #000000 !important;
+}
+.filterCaption {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    /* //text-transform: uppercase;
+    font-weight: 400; */
+    letter-spacing: 1px;
+   /*  color: #fff!important; */
+}
+
+.login_modal_footer{margin-top:0px;}
+.login_modal_header .modal-title {text-align: center;font-family:'Philosopher',sans-serif; }
+.form-group{position: relative;}
+.form-group .login-field-icon {
+    font-size: 10px;
+    position: absolute;
+    right: 15px;
+    top: 3px;
+    transition: all 0.25s ease 0s;
+    padding-top: 1%;
+}
+.login-modal{
+    width:100%;
+    padding-bottom:20px;
+}
+.login_modal_header, .login_modal_footer {background: #ffffff !important;color:#d43f3a;}
+.modal-register-btn{margin: 4% 33% 2% 33% ;width:100%;}
+.login-modal input{height:40px; box-shadow: none; border:1px solid #ddd; font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;}
+.modal-body-left{float:left; width:50%; padding-right:4%; border-right:4px solid #ddd; font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;}
+.modal-body-right{float:right; width:47%; font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;}
+
+
+#social-icons-conatainer{position: relative;}
+#center-line{position: absolute;  right: 265.7px;top: 80px;background:#ddd;  border: 4px solid #DDDDDD;border-radius: 20px;}
+#modal-launcher{margin: 30% 0 0 30%; }
+
+
+ .modal-content {
+      border: 0px solid rgba(0,0,0,.2); 
+        font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important;
+	    line-height: 1.5 !important;
+		font-weight: 700 !important;
+      }
+        input:before,
+      input:active,
+      input:focus,
+      textarea:active,
+      textarea:focus,
+      select:active,
+      select:focus
+       { 
+      background-color: #c0c0c0;
+      border: 1px solid #ffb3b3;
+      }
+
+
+.PageHeader{
+	
+	font-size: 20px;
+	text-align:center;
+	font-weight: bold;
+	color: #d9534f;
+	text-decoration: none;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
+.PageSubmitButton{
+	
+	font-size: 20px;
+	text-align:center;
+	font-weight: bold;
+	color: #d9534f;
+	text-decoration: none;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	width:100%;height:40px; margin-bottom:10px;
+	background: #d9534f !important;
+}
+
+.SignUpLink{
+	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important;
+	font-size: 1em !important;
+	background: #fff !important;
+}
+
+.SingInSignUpButton {
+    background-color: #d9534f !important;
+}
+
+.EmailExistMessage{
+	color: #d9534f !important;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-size: 2em !important;
+	background: #fff !important;
+}
